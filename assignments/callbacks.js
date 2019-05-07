@@ -41,11 +41,17 @@ last(items, (lastItem) => console.log(lastItem))
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  console.log("=== sumNums ===")
+  return cb(x + y)
 }
+sumNums(3, 4, (sum) => console.log(sum))
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  console.log("=== multiplyNums ===")
+  return cb(x * y)
 }
+multiplyNums(3, 4, (mul) => console.log(mul))
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
