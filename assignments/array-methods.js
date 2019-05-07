@@ -90,7 +90,34 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// We want to give special recognition to those who raised $200 or more in donations. Collect their info in an array and log the names and donations in order of highest to lowest, with names in last name, first name order
+
+console.log("\n==== Challenge 5: Be Creative ====\n== Problem 1: Names of people who raised $200 or more ==");
+
+let topFundraisers = [];
+
+runners
+  .filter((runner) => runner.donation >= 200)
+  .sort((a,b) => b.donation - a.donation)
+  .forEach((runner) => topFundraisers.push(`\$${runner.donation} ${runner.last_name}, ${runner.first_name}`));
+console.log(topFundraisers);
 
 // Problem 2
+// We're sending out an e-mail blast to anyone who's collected less than $100 in donations. Maybe they just need a little encouragement. Collect all their e-mails into an array and log it to the console
+
+console.log("\n==== Challenge 5: Be Creative ====\n== Problem 2: E-mails of people who have collected $100 or less ==");
+let lowFundraisers = [];
+lowFundraisers = runners.filter((runner) => runner.donation < 100).map((runner) => runner.email);
+console.log(lowFundraisers);
 
 // Problem 3
+// We want a list of all the companies represented by our runners, sorted in alphabetical order with no duplicates. Collect them in an array and log it to the console
+
+let companies = runners
+  .reduce((unique, current) => {
+    if (unique.indexOf(current.company_name) < 0 ) unique.push(current.company_name);
+    return unique;
+  }, [])
+  .sort();
+
+console.log(companies);

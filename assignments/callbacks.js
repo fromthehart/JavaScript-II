@@ -68,4 +68,20 @@ function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  
+  console.log("=== removeDuplicates ===")
+  return cb(array.reduce((unique, current) => {
+    if (unique.indexOf(current) < 0 ) unique.push(current);
+    return unique;
+  }, []))
+  
+  // Or return cb(array.filter((current, index) => array.indexOf(current) === index)
+  // How it works: the first time for example 'Pencil' appears, indexOf(current) will equal the current index
+  //               if it appears again, the indexOf(current) will return the earlier position in array,
+  //                 not matching index
+
+  // The simplest modern approach: return cb([ ...new Set(array) ]);
 }
+
+items.push('Pencil', 'Gum', 'paper', 'Pencil', 'yo-yo', 'yo-yo', 'yo-yo', 'iPad');
+removeDuplicates(items, (contained) => console.log(contained))
