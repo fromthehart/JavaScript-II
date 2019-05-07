@@ -12,20 +12,24 @@ let momsWallet = () => {
       return true;
     } else return false;
   }
+
   let spend = (val) => {
     if (momApproves(val)) {
       momsVisa += val;
       return `\$${val} charged to Mom's Visa. Remember that on Mother's Day!`;
     } else return "Mom says to ask your dad instead.";
   }
+
   let balance = () => {
     return `You currently owe Mom \$${momsVisa}.`;
   }
+  
   return {
     spend: spend,
     balance: balance 
   };
 };
+
 console.log("==== Challenge 1: Write your own closure ====");
 const wallet = momsWallet();
 console.log(wallet.balance());

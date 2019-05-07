@@ -84,4 +84,4 @@ function removeDuplicates(array, cb) {
 }
 
 items.push('Pencil', 'Gum', 'paper', 'Pencil', 'yo-yo', 'yo-yo', 'yo-yo', 'iPad');
-removeDuplicates(items, (contained) => console.log(contained))
+removeDuplicates(items, (contained) => console.log(contained));
