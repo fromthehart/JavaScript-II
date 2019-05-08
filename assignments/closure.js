@@ -7,27 +7,25 @@ let momsWallet = () => {
   let momsVisa = 0;
   let momsLimit = 100;
 
-  let momApproves = (val) => {
+  const momApproves = (val) => {
     if (momsVisa + val < momsLimit) {
       return true;
     } else return false;
   }
-
-  let spend = (val) => {
-    if (momApproves(val)) {
-      momsVisa += val;
-      return `\$${val} charged to Mom's Visa. Remember that on Mother's Day!`;
-    } else return "Mom says to ask your dad instead.";
-  }
-
-  let balance = () => {
-    return `You currently owe Mom \$${momsVisa}.`;
+  
+  const moneyHandling = {
+      spend: (val) => {
+        if (momApproves(val)) {
+          momsVisa += val;
+          return `\$${val} charged to Mom's Visa. Remember that on Mother's Day!`;
+        } else return "Mom says to ask your dad instead.";
+      },
+      balance: () => {
+        return `You currently owe Mom \$${momsVisa}.`;
+      }
   }
   
-  return {
-    spend: spend,
-    balance: balance 
-  };
+  return moneyHandling;
 };
 
 console.log("==== Challenge 1: Write your own closure ====");
@@ -56,6 +54,7 @@ const counter = () => {
   return () => count++;
 };
 
+console.log("\n==== Challenge 2: Create a counter function ====");
 const newCounter = counter();
 newCounter();
 newCounter();
@@ -91,6 +90,7 @@ const counterFactory = () => {
   }
 };
 
+console.log("\n==== Challenge 3: Create a counter function with an object that can increment and decrement ====");
 const counterThing = counterFactory();
 console.log(counterThing.increment());
 console.log(counterThing.increment());
